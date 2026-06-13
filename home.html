@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG Mini App - Chat UI</title>
+    <!-- Telegram Web App Script -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--tg-theme-bg-color, #f4f7f6);
+            color: var(--tg-theme-text-color, #000000);
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* हर बॉक्स के बीच दूरी रखने के लिए */
+        }
+        
+        .chat-box {
+            width: 100%;
+            max-width: 450px;
+            background: var(--tg-theme-secondary-bg-color, #ffffff);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .chat-message-row {
+            display: flex;
+            align-items: flex-start; 
+            gap: 12px;               
+        }
+
+        .chat-dp {
+            width: 45px;            
+            height: 45px;           
+            border-radius: 50%;     
+            object-fit: cover;      
+            flex-shrink: 0;         
+            border: 2px solid #e0e0e0;
+        }
+
+        .message-content-wrapper {
+            display: flex;
+            flex-direction: column; 
+            max-width: 75%;         
+            width: 100%;
+        }
+
+        .user-name {
+            font-size: 13px;
+            font-weight: bold;
+            color: #555555;
+            margin-bottom: 4px;
+        }
+
+        .message-bubble {
+            background-color: #f1f0f0; 
+            color: #333333;
+            padding: 10px 14px;
+            border-radius: 0px 16px 16px 16px; 
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: #999999;
+            margin-top: 4px;
+            align-self: flex-end; 
+        }
+
+        .button-container {
+            text-align: center;  
+            width: 100%;        
+            margin-top: 10px;     
+        }
+
+        .help-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome dear 👀</h2>
+    <h4>🎧 Looking For A Music Bot? ✨Fast • Smooth • 24/7 Active, Play 🔍 Your Favorite Songs Instantly, Enjoy Music Without Hassle 🎶 Try It Once, You'll Love It 💞</h4>
+
+    <h2>🤖 Music Bot Collective</h2>
+    <div class="card" id="active-card">
+        <h3>Total Bots 10</h3>
+        <p><span class="bold">Active Bot</span> 03</p>
+    </div>
+    <!-- Chat Box 1 -->
+    <div class="chat-box">
+        <div class="chat-message-row">
+            <img src="my-dp.png" alt="User Avatar" class="chat-dp">
+            <div class="message-content-wrapper">
+                <div class="user-name">Laado Music</div>
+                <div class="message-bubble">Username: @laado_musicbot</div>
+                <div class="message-time">⁠● online</div>
+                <div class="button-container">
+                    <a href="https://t.me/laado_musicbot" class="help-button">open</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Box 2 -->
+    <div class="chat-box">
+        <div class="chat-message-row">
+            <img src="my-dp.png" alt="User Avatar" class="chat-dp">
+            <div class="message-content-wrapper">
+                <div class="user-name">playerpro music</div>
+                <div class="message-bubble">Username: @PlayerPro_MusicBot</div>
+                <div class="message-time">● online</div>
+                <div class="button-container">
+                    <a href="https://t.me/PlayerPro_MusicBot" class="help-button">open</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Box 3 -->
+    <div class="chat-box">
+        <div class="chat-message-row">
+            <img src="my-dp.png" alt="User Avatar" class="chat-dp">
+            <div class="message-content-wrapper">
+                <div class="user-name">kuku Music</div>
+                <div class="message-bubble">Username: @Kuku_MusicBot</div>
+                <div class="message-time">● online</div>
+                <div class="button-container">
+                    <a href="https://t.me/Kuku_MusicBot" class="help-button">open</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
