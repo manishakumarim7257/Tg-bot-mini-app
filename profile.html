@@ -62,7 +62,8 @@
 <script>
         function initTelegramApp() {
             // Telegram WebApp Object Check
-            const tg = window.Telegram?.WebApp;
+            const tg = window.parent.Telegram?.WebApp || window.Telegram?.WebApp;
+            
 
             if (tg) {
                 tg.ready(); 
