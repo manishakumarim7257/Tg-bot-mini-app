@@ -8,19 +8,14 @@
     <link rel="stylesheet" href="https://cloudflare.com">
     <script src="https://telegram.org"></script>
     <style>
-        /* Base Styling */
-        body, html {
-            margin: 0; padding: 0; height: 100%; width: 100%;
-            background-color: #0b141a; overflow: hidden; font-family: Arial, sans-serif;
+        /* Base Setup */
+        body {
+            margin: 0; padding: 0; font-family: Arial, sans-serif;
+            background-color: #0b141a; color: #ffffff; padding-bottom: 80px;
         }
-
-        /* Iframe Container jahan aapki original files khulengi */
-        .content-frame {
-            width: 100%;
-            height: calc(100% - 70px); /* Navbar ke liye space chhoda */
-            border: none;
-            background-color: #0b141a;
-        }
+        
+        /* Container jahan aapka purana page bina iframe ke khulega */
+        #app-content { width: 100%; margin: 0; padding: 0; }
 
         /* WhatsApp Style Bottom Navbar */
         .bottom-navbar {
@@ -35,7 +30,7 @@
             width: 100%; height: 100%; -webkit-tap-highlight-color: transparent;
         }
 
-        /* Capsule Background Effect (Aapki Photo Jaisa) */
+        /* Active circle profile bubble layout */
         .icon-wrapper {
             display: flex; align-items: center; justify-content: center;
             width: 55px; height: 32px; border-radius: 16px;
@@ -46,10 +41,10 @@
             font-size: 12px; color: #8696a0; margin-top: 4px; font-weight: 500;
         }
 
-        /* ACTIVE TAB STYLE */
+        /* Active style trigger */
         .nav-item.active .icon-wrapper {
-            background-color: rgba(0, 168, 132, 0.2); /* Light Green Bubble */
-            color: #00a884; /* WhatsApp Teal Color */
+            background-color: rgba(0, 168, 132, 0.2);
+            color: #00a884;
         }
         .nav-item.active .nav-label {
             color: #00a884; font-weight: bold;
@@ -58,45 +53,71 @@
 </head>
 <body>
 
-    <!-- Default me sabse pehle home.html dikhega -->
-    <iframe id="main-app-frame" src="home.html" class="content-frame"></iframe>
+    <!-- Yahan aapki purani files ka content aayega (No security blockage) -->
+    <div id="app-content"></div>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- WhatsApp Layout Navigation Bar -->
     <nav class="bottom-navbar">
-        <button class="nav-item active" onclick="changeTab('home.html', this)">
+        <button class="nav-item active" onclick="loadPage('home.html', this)">
             <div class="icon-wrapper"><i class="fa-solid fa-house"></i></div>
             <span class="nav-label">Home</span>
         </button>
-        <button class="nav-item" onclick="changeTab('profile.html', this)">
+        <button class="nav-item" onclick="loadPage('profile.html', this)">
             <div class="icon-wrapper"><i class="fa-solid fa-user"></i></div>
             <span class="nav-label">Profile</span>
         </button>
-        <button class="nav-item" onclick="changeTab('owner.html', this)">
+        <button class="nav-item" onclick="loadPage('owner.html', this)">
             <div class="icon-wrapper"><i class="fa-solid fa-user-shield"></i></div>
             <span class="nav-label">Owner</span>
         </button>
     </nav>
 
     <script>
-        // Telegram App Setup
         const tg = window.Telegram.WebApp;
         tg.ready(); tg.expand();
 
-        function changeTab(pageUrl, buttonElement) {
-            // Iframe me select kiya hua page load karein
-            document.getElementById('main-app-frame').src = pageUrl;
+        async function loadPage(pageName, buttonElement) {
+            try {
+                const response = await fetch(pageName);
+                if (!response.ok) throw new Error('Page mil nahi raha hai');
+                
+                const htmlText = await response.text();
+                
+                // Pure page ko load karne ke liye parse karna
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+                
+                // Pura HTML body content nikalna bina use chhuye
+                const pageBody = doc.body ? doc.body.innerHTML : htmlText;
+                document.getElementById('app-content').innerHTML = pageBody;
 
-            // Purane active button se green color hatayein
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            
-            // Naye button ko active green karein
-            buttonElement.classList.add('active');
+                // Ek zaroori cheez: Jo JavaScript code profile.html ke andar hai use force execute karna
+                const scripts = document.getElementById('app-content').querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
 
-            // Telegram me halka vibration effect (vibrate)
-            if (tg.HapticFeedback) {
-                tg.HapticFeedback.impactOccurred('light');
+                // Tab active change logic
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                buttonElement.classList.add('active');
+
+                // Vibration feedback
+                if (tg.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
+
+            } catch (error) {
+                console.error('Error loading page:', error);
+                document.getElementById('app-content').innerHTML = '<p style="color:red; text-align:center; padding-top:20px;">Page load karne me error aayi!</p>';
             }
         }
+
+        // Pehli baar khulne par home.html automatic load ho
+        window.onload = function() {
+            const defaultBtn = document.querySelector('.nav-item');
+            loadPage('home.html', defaultBtn);
+        };
     </script>
 </body>
 </html>
