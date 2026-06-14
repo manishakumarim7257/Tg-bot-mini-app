@@ -143,6 +143,50 @@
         .my-button:hover {
             background-color: #45a049;
         }
+
+        /* User Details Card with 2-color design */
+        #user-card {
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+            margin-bottom: 15px;
+        }
+
+        .user-details-box {
+            width: 100%;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .user-details-header {
+            background: linear-gradient(135deg, #2481cc 0%, #1a5fa0 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .user-details-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 16px;
+        }
+
+        .user-details-content {
+            padding: 15px;
+        }
+
+        .user-details-content .avatar-container {
+            margin-bottom: 15px;
+        }
+
+        .user-details-content p {
+            margin: 8px 0;
+            font-size: 13px;
+        }
     </style>
 </head>
 <body>
@@ -150,17 +194,22 @@
     <h4>🎧 Looking For A Music Bot? ✨Fast • Smooth • 24/7 Active, Play 🔍 Your Favorite Songs Instantly, Enjoy Music Without Hassle 🎶 Try It Once, You'll Love It 💞</h4>
     
     <!-- Feature 1: User Details -->
-    <div class="card" id="user-card">
-        <h3>👤 User Details (You)</h3>
-        
-        <div class="avatar-container">
-            <img id="u-avatar" class="user-avatar" src="https://cloudflare.com" alt="User DP">
-        </div>
+    <div id="user-card">
+        <div class="user-details-box">
+            <div class="user-details-header">
+                <h3>👤 User Details (You)</h3>
+            </div>
+            <div class="user-details-content">
+                <div class="avatar-container">
+                    <img id="u-avatar" class="user-avatar" src="https://cloudflare.com" alt="User DP">
+                </div>
 
-        <p><span class="bold">Name:</span> <span id="u-name">Loading...</span></p>
-        <p><span class="bold">Username:</span> <span id="u-username">Loading...</span></p>
-        <p><span class="bold">ID:</span> <span id="u-id">Loading...</span></p>
-        <p><span class="bold">Language:</span> <span id="u-lang">Loading...</span></p>
+                <p><span class="bold">Name:</span> <span id="u-name">Loading...</span></p>
+                <p><span class="bold">Username:</span> <span id="u-username">Loading...</span></p>
+                <p><span class="bold">ID:</span> <span id="u-id">Loading...</span></p>
+                <p><span class="bold">Language:</span> <span id="u-lang">Loading...</span></p>
+            </div>
+        </div>
     </div>
 
     <h2>🤖 Music Bot Collective</h2>
