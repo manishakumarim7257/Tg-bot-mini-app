@@ -96,22 +96,6 @@
             font-weight: bold; 
         }
 
-        /* Profile Photo Design */
-        .avatar-container {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .user-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid var(--primary-color);
-            object-fit: cover;
-            box-shadow: 0 2px 8px var(--shadow-color);
-            margin: 0 auto;
-        }
-
         /* Chat Box - Uniform Size */
         .chat-box {
             width: 100%;
@@ -202,60 +186,6 @@
         .help-button:hover,
         .my-button:hover {
             background-color: var(--secondary-color);
-        }
-
-        /* User Details Card - Clickable */
-        #user-card {
-            background: transparent;
-            padding: 0;
-            box-shadow: none;
-            margin-bottom: 15px;
-            cursor: pointer;
-        }
-
-        .user-details-box {
-            width: 100%;
-            max-width: 400px;
-            background: var(--bg-color);
-            border-radius: 12px;
-            box-shadow: 0 3px 10px var(--shadow-color);
-            overflow: hidden;
-            margin: 0 auto;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .user-details-box:active {
-            transform: scale(0.98);
-            box-shadow: 0 2px 5px var(--shadow-color);
-        }
-
-        .user-details-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .user-details-header h3 {
-            margin: 0;
-            color: white;
-            font-size: 16px;
-        }
-
-        .user-details-content {
-            padding: 15px;
-            background: var(--bg-color);
-            color: var(--text-color);
-        }
-
-        .user-details-content .avatar-container {
-            margin-bottom: 15px;
-        }
-
-        .user-details-content p {
-            margin: 8px 0;
-            font-size: 13px;
-            color: var(--text-color);
         }
 
         /* Profile Modal Styles - FULLSCREEN */
@@ -720,25 +650,6 @@
             </div>
         </div>
     </div>
-    
-    <!-- Feature 1: User Details (Now Clickable) -->
-    <div id="user-card" onclick="openProfileModal()">
-        <div class="user-details-box">
-            <div class="user-details-header">
-                <h3>👤 User Details (You) - Tap to view full profile</h3>
-            </div>
-            <div class="user-details-content">
-                <div class="avatar-container">
-                    <img id="u-avatar" class="user-avatar" src="https://cloudflare.com" alt="User DP">
-                </div>
-
-                <p><span class="bold">Name:</span> <span id="u-name">Loading...</span></p>
-                <p><span class="bold">Username:</span> <span id="u-username">Loading...</span></p>
-                <p><span class="bold">ID:</span> <span id="u-id">Loading...</span></p>
-                <p><span class="bold">Language:</span> <span id="u-lang">Loading...</span></p>
-            </div>
-        </div>
-    </div>
 
     <h2>🤖 Music Bot Collective</h2>
 
@@ -839,12 +750,6 @@
                     const userLang = user.language_code || 'en';
                     const userPhoto = user.photo_url;
 
-                    // Update main card
-                    document.getElementById('u-name').innerText = fullName;
-                    document.getElementById('u-username').innerText = username;
-                    document.getElementById('u-id').innerText = userId;
-                    document.getElementById('u-lang').innerText = userLang;
-
                     // Update profile modal
                     document.getElementById('profile-name').innerText = fullName;
                     document.getElementById('profile-full-name').innerText = fullName;
@@ -863,7 +768,6 @@
                     document.getElementById('profile-date').innerText = dateStr;
 
                     if (userPhoto) {
-                        document.getElementById('u-avatar').src = userPhoto;
                         document.getElementById('profile-avatar').src = userPhoto;
                     }
 
@@ -876,19 +780,12 @@
 
         setTimeout(() => {
             clearInterval(checkInterval);
-            if (document.getElementById('u-id').innerText === "Loading...") {
+            if (document.getElementById('profile-id').innerText === "Loading...") {
                 const userName = "Web Browser Mode";
                 const userUsername = "@not_inside_tg";
                 const userId = "Offline_ID_101";
                 const userLang = "en";
                 const userAvatar = "https://cloudflare.com";
-
-                // Update main card
-                document.getElementById('u-name').innerText = userName;
-                document.getElementById('u-username').innerText = userUsername;
-                document.getElementById('u-id').innerText = userId;
-                document.getElementById('u-lang').innerText = userLang;
-                document.getElementById('u-avatar').src = userAvatar;
 
                 // Update profile modal
                 document.getElementById('profile-name').innerText = userName;
