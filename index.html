@@ -189,174 +189,243 @@
         }
 
         /* Profile Modal Styles - FULLSCREEN */
-        .profile-modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 10000;
-            justify-content: center;
-            align-items: flex-start;
-            overflow-y: auto;
-            padding: 20px 0;
-        }
+    .profile-capsule-trigger {
+    display: flex;
+    align-items: center;
+    background-color: #0f1c24;     /* Dark charcoal dark matching design layout */
+    border: 1px solid #1e3a47;      /* Clean subtle structural border line outline */
+    border-radius: 30px;           /* Capsule pill shape presentation corners */
+    padding: 8px 18px;             /* Clean layout alignment separation spacing */
+    width: fit-content;            /* Fits properly bounds context container spacing */
+    min-width: 250px;              /* Standard width matching user devices */
+    color: #ffffff;                /* Global default text color structure to white */
+    font-family: sans-serif;       /* Clean default standard fonts presentation */
+    cursor: pointer;               /* Changes cursor indicator behavior to clicking hand */
+    user-select: none;             /* Disables text highlight marker on sudden taps */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-bottom: 15px;           /* Adds systematic structural buffer spacer directly below */
+}
 
-        .profile-modal {
-            background: var(--bg-color);
-            border-radius: 16px;
-            padding: 0;
-            width: 95%;
-            max-width: 500px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
-            animation: slideUp 0.3s ease;
-            margin: 20px auto;
-        }
+/* Hover Effect - Mouse over animation highlight */
+.profile-capsule-trigger:hover {
+    background-color: #142631;     
+}
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+/* Active Click Effect - Small scaling bounce tactile response animation */
+.profile-capsule-trigger:active {
+    transform: scale(0.98);
+}
 
-        .profile-modal-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 30px 20px;
-            border-radius: 16px 16px 0 0;
-            text-align: center;
-            position: relative;
-        }
+/* Rounded Avatar Graphic Layout style inside layout capsule */
+.profile-capsule-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;            /* Standard circular presentation bounding box */
+    object-fit: cover;             /* Maintains clean visual proportions constraints */
+    margin-right: 12px;            /* Pushes username safely to the side parameter */
+    border: 1px solid #2d4f61;     
+    background-color: #1e3a47;     
+}
 
-        .profile-modal-header h2 {
-            margin: 0;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
+/* Flex Container Wrapper layout for typography data rows */
+.profile-capsule-info {
+    flex-grow: 1;                  /* Takes up rest responsive alignment columns flow */
+    display: flex;
+    flex-direction: column;        /* Vertically aligned parameter configuration rows */
+}
 
-        .profile-modal-close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+/* Primary Profile Username styling definitions */
+.profile-capsule-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #ffffff;
+}
 
-        .profile-modal-close-btn:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.1);
-        }
+/* Lower Subtitle instruction "tap profile" helper caption description */
+.profile-capsule-sub {
+    font-size: 11px;
+    color: #8fa3b0;                /* Light tone color contrast adjustment */
+    margin-top: 1px;
+}
 
-        .profile-modal-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px 20px;
-        }
+/* Right Dropdown Arrow alignment wrapper vector icon formatting */
+.profile-capsule-arrow {
+    display: flex;
+    align-items: center;
+    color: #8fa3b0;
+    margin-left: 8px;
+}
 
-        .profile-modal-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 5px solid var(--primary-color);
-            object-fit: cover;
-            margin-bottom: 25px;
-            box-shadow: 0 6px 16px var(--shadow-color);
-        }
+/* user */
+.profile-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 20px 0;
+}
 
-        .profile-user-name {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.profile-modal {
+    background: var(--bg-color);
+    border-radius: 16px;
+    padding: 0;
+    width: 95%;
+    max-width: 500px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.3s ease;
+    margin: 20px auto;
+}
 
-        .profile-modal-info {
-            width: 100%;
-            margin-bottom: 20px;
-        }
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
-        .profile-info-row {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            border-left: 5px solid var(--primary-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.profile-modal-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 30px 20px;
+    border-radius: 16px 16px 0 0;
+    text-align: center;
+    position: relative;
+}
 
-        .profile-info-left {
-            display: flex;
-            flex-direction: column;
-        }
+.profile-modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
 
-        .profile-info-label {
-            font-size: 11px;
-            color: #999;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+.profile-modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-        .profile-info-value {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--text-color);
-            word-break: break-all;
-        }
+.profile-modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
 
-        .profile-info-icon {
-            font-size: 28px;
-            margin-left: 15px;
-            opacity: 0.6;
-        }
+.profile-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+}
 
-        .profile-modal-buttons {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-            margin-top: 20px;
-        }
+.profile-modal-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+    object-fit: cover;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
 
-        .profile-modal-btn {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 15px;
-        }
+.profile-user-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .profile-close-btn {
-            background-color: var(--primary-color);
-            color: white;
-        }
+.profile-modal-info {
+    width: 100%;
+    margin-bottom: 20px;
+}
 
-        .profile-close-btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
+.profile-info-row {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 5px solid var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.profile-info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info-label {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.profile-info-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);
+    word-break: break-all;
+}
+
+.profile-info-icon {
+    font-size: 28px;
+    margin-left: 15px;
+    opacity: 0.6;
+}
+
+.profile-modal-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.profile-modal-btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.profile-close-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.profile-close-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    }
+        
         /* Theme Selector Modal */
         .theme-modal-overlay {
             display: none;
