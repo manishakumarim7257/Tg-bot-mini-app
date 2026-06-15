@@ -856,7 +856,13 @@
                     document.getElementById('profile-date').innerText = dateStr;
 
                     if (userPhoto) {
+                        // Modal ki image update karne ke liye
                         document.getElementById('profile-avatar').src = userPhoto;
+                        
+                        document.getElementById('capsule-avatar-img').src = userPhoto;
+                    }
+                    if (firstName) {
+                        document.getElementById('capsule-full-name').innerText = firstName + (lastName ? ' ' + lastName : '');
                     }
 
                     clearInterval(checkInterval);
