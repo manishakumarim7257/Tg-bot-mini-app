@@ -258,7 +258,7 @@
             color: var(--text-color);
         }
 
-        /* Profile Modal Styles */
+        /* Profile Modal Styles - FULLSCREEN */
         .profile-modal-overlay {
             display: none;
             position: fixed;
@@ -266,27 +266,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 10000;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 20px 0;
         }
 
         .profile-modal {
             background: var(--bg-color);
             border-radius: 16px;
-            padding: 20px;
-            width: 90%;
-            max-width: 450px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            padding: 0;
+            width: 95%;
+            max-width: 500px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
             animation: slideUp 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
+            margin: 20px auto;
         }
 
         @keyframes slideUp {
             from {
-                transform: translateY(20px);
+                transform: translateY(50px);
                 opacity: 0;
             }
             to {
@@ -298,76 +299,122 @@
         .profile-modal-header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
-            padding: 20px;
-            margin: -20px -20px 15px -20px;
+            padding: 30px 20px;
             border-radius: 16px 16px 0 0;
             text-align: center;
+            position: relative;
         }
 
         .profile-modal-header h2 {
             margin: 0;
-            font-size: 20px;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .profile-modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-modal-close-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
         }
 
         .profile-modal-content {
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 30px 20px;
         }
 
         .profile-modal-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 4px solid var(--primary-color);
+            border: 5px solid var(--primary-color);
             object-fit: cover;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .profile-user-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px var(--shadow-color);
         }
 
         .profile-modal-info {
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .profile-info-row {
             background: var(--card-bg);
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 5px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-info-left {
+            display: flex;
+            flex-direction: column;
         }
 
         .profile-info-label {
-            font-size: 12px;
-            color: #888;
+            font-size: 11px;
+            color: #999;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
         .profile-info-value {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
             color: var(--text-color);
+            word-break: break-all;
+        }
+
+        .profile-info-icon {
+            font-size: 28px;
+            margin-left: 15px;
+            opacity: 0.6;
         }
 
         .profile-modal-buttons {
             display: flex;
             gap: 10px;
             width: 100%;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .profile-modal-btn {
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .profile-close-btn {
@@ -377,6 +424,7 @@
 
         .profile-close-btn:hover {
             background-color: var(--secondary-color);
+            transform: translateY(-2px);
         }
 
         /* Theme Selector Modal */
@@ -604,36 +652,70 @@
         </div>
     </div>
 
-    <!-- Profile Modal -->
+    <!-- Profile Modal - FULLSCREEN DETAILED -->
     <div class="profile-modal-overlay" id="profileModalOverlay">
         <div class="profile-modal">
             <div class="profile-modal-header">
+                <button class="profile-modal-close-btn" onclick="closeProfileModal()">✕</button>
                 <h2>👤 Your Profile</h2>
             </div>
             <div class="profile-modal-content">
                 <img id="profile-avatar" class="profile-modal-avatar" src="https://cloudflare.com" alt="User DP">
                 
+                <div class="profile-user-name" id="profile-full-name">Loading...</div>
+                
                 <div class="profile-modal-info">
                     <div class="profile-info-row">
-                        <div class="profile-info-label">Full Name</div>
-                        <div class="profile-info-value" id="profile-name">Loading...</div>
+                        <div class="profile-info-left">
+                            <div class="profile-info-label">👤 Full Name</div>
+                            <div class="profile-info-value" id="profile-name">Loading...</div>
+                        </div>
+                        <div class="profile-info-icon">👨</div>
                     </div>
+
                     <div class="profile-info-row">
-                        <div class="profile-info-label">Username</div>
-                        <div class="profile-info-value" id="profile-username">Loading...</div>
+                        <div class="profile-info-left">
+                            <div class="profile-info-label">📱 Username</div>
+                            <div class="profile-info-value" id="profile-username">Loading...</div>
+                        </div>
+                        <div class="profile-info-icon">📲</div>
                     </div>
+
                     <div class="profile-info-row">
-                        <div class="profile-info-label">User ID</div>
-                        <div class="profile-info-value" id="profile-id">Loading...</div>
+                        <div class="profile-info-left">
+                            <div class="profile-info-label">🆔 User ID</div>
+                            <div class="profile-info-value" id="profile-id">Loading...</div>
+                        </div>
+                        <div class="profile-info-icon">🔢</div>
                     </div>
+
                     <div class="profile-info-row">
-                        <div class="profile-info-label">Language</div>
-                        <div class="profile-info-value" id="profile-lang">Loading...</div>
+                        <div class="profile-info-left">
+                            <div class="profile-info-label">🌍 Language</div>
+                            <div class="profile-info-value" id="profile-lang">Loading...</div>
+                        </div>
+                        <div class="profile-info-icon">🗣️</div>
+                    </div>
+
+                    <div class="profile-info-row">
+                        <div class="profile-info-left">
+                            <div class="profile-info-label">📅 Member Since</div>
+                            <div class="profile-info-value" id="profile-date">Today</div>
+                        </div>
+                        <div class="profile-info-icon">📆</div>
+                    </div>
+
+                    <div class="profile-info-row">
+                        <div class="profile-info-left">
+                            <div class="profile-info-label">✅ Status</div>
+                            <div class="profile-info-value" id="profile-status">🟢 Active</div>
+                        </div>
+                        <div class="profile-info-icon">✨</div>
                     </div>
                 </div>
 
                 <div class="profile-modal-buttons">
-                    <button class="profile-modal-btn profile-close-btn" onclick="closeProfileModal()">Close</button>
+                    <button class="profile-modal-btn profile-close-btn" onclick="closeProfileModal()">Close Profile</button>
                 </div>
             </div>
         </div>
@@ -765,9 +847,20 @@
 
                     // Update profile modal
                     document.getElementById('profile-name').innerText = fullName;
+                    document.getElementById('profile-full-name').innerText = fullName;
                     document.getElementById('profile-username').innerText = username;
                     document.getElementById('profile-id').innerText = userId;
                     document.getElementById('profile-lang').innerText = userLang;
+                    document.getElementById('profile-status').innerText = '🟢 Active Now';
+                    
+                    // Set date
+                    const today = new Date();
+                    const dateStr = today.toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                    });
+                    document.getElementById('profile-date').innerText = dateStr;
 
                     if (userPhoto) {
                         document.getElementById('u-avatar').src = userPhoto;
@@ -799,10 +892,20 @@
 
                 // Update profile modal
                 document.getElementById('profile-name').innerText = userName;
+                document.getElementById('profile-full-name').innerText = userName;
                 document.getElementById('profile-username').innerText = userUsername;
                 document.getElementById('profile-id').innerText = userId;
                 document.getElementById('profile-lang').innerText = userLang;
                 document.getElementById('profile-avatar').src = userAvatar;
+                document.getElementById('profile-status').innerText = '🟡 Offline';
+                
+                const today = new Date();
+                const dateStr = today.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                document.getElementById('profile-date').innerText = dateStr;
             }
         }, 5000);
 
