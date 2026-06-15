@@ -582,76 +582,93 @@
         </div>
     </div>
 
-    <!-- Profile Modal - FULLSCREEN DETAILED -->
-    <button class="your-btn-class" onclick="openProfileModal()">View Profile</button>
+      <!-- Profile Trigger Capsule (Purane Button ki jagah ise lagayein) -->
+<div class="profile-capsule-trigger" onclick="openProfileModal()">
+    <!-- Profile Avatar Image (Yeh modal ke avatar se connect ho jayegi) -->
+    <img class="profile-capsule-avatar" src="https://cloudflare.com" alt="User DP" id="capsule-avatar-img">
     
-    <div class="profile-modal-overlay" id="profileModalOverlay">
-        <div class="profile-modal">
-            <div class="profile-modal-header">
-                <button class="profile-modal-close-btn" onclick="closeProfileModal()">✕</button>
-                <h2>👤 Your Profile</h2>
+    <!-- User Information Text -->
+    <div class="profile-capsule-info">
+        <div class="profile-capsule-name" id="capsule-full-name">Radhe Krishna 🌺</div>
+        <div class="profile-capsule-sub">tap profile</div>
+    </div>
+    
+    <!-- Dropdown Arrow Icon -->
+    <div class="profile-capsule-arrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </div>
+</div>
+
+<!-- Aapka Purana Profile Modal (Isme koi change nahi hai) -->
+<div class="profile-modal-overlay" id="profileModalOverlay">
+    <div class="profile-modal">
+        <div class="profile-modal-header">
+            <button class="profile-modal-close-btn" onclick="closeProfileModal()">✕</button>
+            <h2>👤 Your Profile</h2>
+        </div>
+        <div class="profile-modal-content">
+            <img id="profile-avatar" class="profile-modal-avatar" src="https://cloudflare.com" alt="User DP">
+            
+            <div class="profile-user-name" id="profile-full-name">Loading...</div>
+            
+            <div class="profile-modal-info">
+                <div class="profile-info-row">
+                    <div class="profile-info-left">
+                        <div class="profile-info-label">👤 Full Name</div>
+                        <div class="profile-info-value" id="profile-name">Loading...</div>
+                    </div>
+                    <div class="profile-info-icon">👨</div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-left">
+                        <div class="profile-info-label">📱 Username</div>
+                        <div class="profile-info-value" id="profile-username">Loading...</div>
+                    </div>
+                    <div class="profile-info-icon">📲</div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-left">
+                        <div class="profile-info-label">🆔 User ID</div>
+                        <div class="profile-info-value" id="profile-id">Loading...</div>
+                    </div>
+                    <div class="profile-info-icon">🔢</div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-left">
+                        <div class="profile-info-label">🌍 Language</div>
+                        <div class="profile-info-value" id="profile-lang">Loading...</div>
+                    </div>
+                    <div class="profile-info-icon">🗣️</div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-left">
+                        <div class="profile-info-label">📅 Member Since</div>
+                        <div class="profile-info-value" id="profile-date">Today</div>
+                    </div>
+                    <div class="profile-info-icon">📆</div>
+                </div>
+
+                <div class="profile-info-row">
+                    <div class="profile-info-left">
+                        <div class="profile-info-label">✅ Status</div>
+                        <div class="profile-info-value" id="profile-status">🟢 Active</div>
+                    </div>
+                    <div class="profile-info-icon">✨</div>
+                </div>
             </div>
-            <div class="profile-modal-content">
-                <img id="profile-avatar" class="profile-modal-avatar" src="https://cloudflare.com" alt="User DP">
-                
-                <div class="profile-user-name" id="profile-full-name">Loading...</div>
-                
-                <div class="profile-modal-info">
-                    <div class="profile-info-row">
-                        <div class="profile-info-left">
-                            <div class="profile-info-label">👤 Full Name</div>
-                            <div class="profile-info-value" id="profile-name">Loading...</div>
-                        </div>
-                        <div class="profile-info-icon">👨</div>
-                    </div>
 
-                    <div class="profile-info-row">
-                        <div class="profile-info-left">
-                            <div class="profile-info-label">📱 Username</div>
-                            <div class="profile-info-value" id="profile-username">Loading...</div>
-                        </div>
-                        <div class="profile-info-icon">📲</div>
-                    </div>
-
-                    <div class="profile-info-row">
-                        <div class="profile-info-left">
-                            <div class="profile-info-label">🆔 User ID</div>
-                            <div class="profile-info-value" id="profile-id">Loading...</div>
-                        </div>
-                        <div class="profile-info-icon">🔢</div>
-                    </div>
-
-                    <div class="profile-info-row">
-                        <div class="profile-info-left">
-                            <div class="profile-info-label">🌍 Language</div>
-                            <div class="profile-info-value" id="profile-lang">Loading...</div>
-                        </div>
-                        <div class="profile-info-icon">🗣️</div>
-                    </div>
-
-                    <div class="profile-info-row">
-                        <div class="profile-info-left">
-                            <div class="profile-info-label">📅 Member Since</div>
-                            <div class="profile-info-value" id="profile-date">Today</div>
-                        </div>
-                        <div class="profile-info-icon">📆</div>
-                    </div>
-
-                    <div class="profile-info-row">
-                        <div class="profile-info-left">
-                            <div class="profile-info-label">✅ Status</div>
-                            <div class="profile-info-value" id="profile-status">🟢 Active</div>
-                        </div>
-                        <div class="profile-info-icon">✨</div>
-                    </div>
-                </div>
-
-                <div class="profile-modal-buttons">
-                    <button class="profile-modal-btn profile-close-btn" onclick="closeProfileModal()">Close Profile</button>
-                </div>
+            <div class="profile-modal-buttons">
+                <button class="profile-modal-btn profile-close-btn" onclick="closeProfileModal()">Close Profile</button>
             </div>
         </div>
     </div>
+</div>
 
     <h2>🤖 Music Bot Collective</h2>
 
