@@ -204,12 +204,13 @@
             background-color: var(--secondary-color);
         }
 
-        /* User Details Card with 2-color design */
+        /* User Details Card - Clickable */
         #user-card {
             background: transparent;
             padding: 0;
             box-shadow: none;
             margin-bottom: 15px;
+            cursor: pointer;
         }
 
         .user-details-box {
@@ -220,6 +221,12 @@
             box-shadow: 0 3px 10px var(--shadow-color);
             overflow: hidden;
             margin: 0 auto;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .user-details-box:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 5px var(--shadow-color);
         }
 
         .user-details-header {
@@ -251,6 +258,127 @@
             color: var(--text-color);
         }
 
+        /* Profile Modal Styles */
+        .profile-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-modal {
+            background: var(--bg-color);
+            border-radius: 16px;
+            padding: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .profile-modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 20px;
+            margin: -20px -20px 15px -20px;
+            border-radius: 16px 16px 0 0;
+            text-align: center;
+        }
+
+        .profile-modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .profile-modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-modal-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .profile-modal-info {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .profile-info-row {
+            background: var(--card-bg);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .profile-info-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .profile-info-value {
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .profile-modal-buttons {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .profile-modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .profile-close-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .profile-close-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
         /* Theme Selector Modal */
         .theme-modal-overlay {
             display: none;
@@ -273,17 +401,6 @@
             max-width: 400px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         .theme-modal h2 {
@@ -486,12 +603,47 @@
             </div>
         </div>
     </div>
+
+    <!-- Profile Modal -->
+    <div class="profile-modal-overlay" id="profileModalOverlay">
+        <div class="profile-modal">
+            <div class="profile-modal-header">
+                <h2>👤 Your Profile</h2>
+            </div>
+            <div class="profile-modal-content">
+                <img id="profile-avatar" class="profile-modal-avatar" src="https://cloudflare.com" alt="User DP">
+                
+                <div class="profile-modal-info">
+                    <div class="profile-info-row">
+                        <div class="profile-info-label">Full Name</div>
+                        <div class="profile-info-value" id="profile-name">Loading...</div>
+                    </div>
+                    <div class="profile-info-row">
+                        <div class="profile-info-label">Username</div>
+                        <div class="profile-info-value" id="profile-username">Loading...</div>
+                    </div>
+                    <div class="profile-info-row">
+                        <div class="profile-info-label">User ID</div>
+                        <div class="profile-info-value" id="profile-id">Loading...</div>
+                    </div>
+                    <div class="profile-info-row">
+                        <div class="profile-info-label">Language</div>
+                        <div class="profile-info-value" id="profile-lang">Loading...</div>
+                    </div>
+                </div>
+
+                <div class="profile-modal-buttons">
+                    <button class="profile-modal-btn profile-close-btn" onclick="closeProfileModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <!-- Feature 1: User Details -->
-    <div id="user-card">
+    <!-- Feature 1: User Details (Now Clickable) -->
+    <div id="user-card" onclick="openProfileModal()">
         <div class="user-details-box">
             <div class="user-details-header">
-                <h3>👤 User Details (You)</h3>
+                <h3>👤 User Details (You) - Tap to view full profile</h3>
             </div>
             <div class="user-details-content">
                 <div class="avatar-container">
@@ -599,13 +751,27 @@
                 const user = tg.initDataUnsafe?.user;
 
                 if (user && user.id) {
-                    document.getElementById('u-name').innerText = `${user.first_name} ${user.last_name || ''}`;
-                    document.getElementById('u-username').innerText = user.username ? `@${user.username}` : 'No Username';
-                    document.getElementById('u-id').innerText = user.id;
-                    document.getElementById('u-lang').innerText = user.language_code || 'en';
+                    const fullName = `${user.first_name} ${user.last_name || ''}`;
+                    const username = user.username ? `@${user.username}` : 'No Username';
+                    const userId = user.id;
+                    const userLang = user.language_code || 'en';
+                    const userPhoto = user.photo_url;
 
-                    if (user.photo_url) {
-                        document.getElementById('u-avatar').src = user.photo_url;
+                    // Update main card
+                    document.getElementById('u-name').innerText = fullName;
+                    document.getElementById('u-username').innerText = username;
+                    document.getElementById('u-id').innerText = userId;
+                    document.getElementById('u-lang').innerText = userLang;
+
+                    // Update profile modal
+                    document.getElementById('profile-name').innerText = fullName;
+                    document.getElementById('profile-username').innerText = username;
+                    document.getElementById('profile-id').innerText = userId;
+                    document.getElementById('profile-lang').innerText = userLang;
+
+                    if (userPhoto) {
+                        document.getElementById('u-avatar').src = userPhoto;
+                        document.getElementById('profile-avatar').src = userPhoto;
                     }
 
                     clearInterval(checkInterval);
@@ -618,11 +784,25 @@
         setTimeout(() => {
             clearInterval(checkInterval);
             if (document.getElementById('u-id').innerText === "Loading...") {
-                document.getElementById('u-name').innerText = "Web Browser Mode";
-                document.getElementById('u-username').innerText = "@not_inside_tg";
-                document.getElementById('u-id').innerText = "Offline_ID_101";
-                document.getElementById('u-lang').innerText = "en";
-                document.getElementById('u-avatar').src = "https://cloudflare.com";
+                const userName = "Web Browser Mode";
+                const userUsername = "@not_inside_tg";
+                const userId = "Offline_ID_101";
+                const userLang = "en";
+                const userAvatar = "https://cloudflare.com";
+
+                // Update main card
+                document.getElementById('u-name').innerText = userName;
+                document.getElementById('u-username').innerText = userUsername;
+                document.getElementById('u-id').innerText = userId;
+                document.getElementById('u-lang').innerText = userLang;
+                document.getElementById('u-avatar').src = userAvatar;
+
+                // Update profile modal
+                document.getElementById('profile-name').innerText = userName;
+                document.getElementById('profile-username').innerText = userUsername;
+                document.getElementById('profile-id').innerText = userId;
+                document.getElementById('profile-lang').innerText = userLang;
+                document.getElementById('profile-avatar').src = userAvatar;
             }
         }, 5000);
 
@@ -652,6 +832,15 @@
             localStorage.setItem('selectedTheme', themeName);
         }
 
+        // Profile Modal Functions
+        function openProfileModal() {
+            document.getElementById('profileModalOverlay').style.display = 'flex';
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profileModalOverlay').style.display = 'none';
+        }
+
         // Load saved theme on page load
         window.addEventListener('load', () => {
             const savedTheme = localStorage.getItem('selectedTheme') || 'light-theme';
@@ -666,10 +855,16 @@
             });
         });
 
-        // Close modal when clicking outside
+        // Close modals when clicking outside
         document.getElementById('themeModalOverlay').addEventListener('click', (e) => {
             if (e.target.id === 'themeModalOverlay') {
                 closeThemeModal();
+            }
+        });
+
+        document.getElementById('profileModalOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'profileModalOverlay') {
+                closeProfileModal();
             }
         });
     </script>
