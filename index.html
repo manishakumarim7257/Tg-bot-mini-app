@@ -651,21 +651,26 @@
         </div>
     </div>
 
-      <!-- Profile Trigger Capsule (Purane Button ki jagah ise lagayein) -->
-<div class="profile-capsule-trigger" onclick="openProfileModal()">
-    <!-- Profile Avatar Image (Yeh modal ke avatar se connect ho chuki hai) -->
-<img class="profile-capsule-avatar" src="https://cloudflare.com" alt="User DP" id="capsule-avatar-img">
+    <!-- 1. Profile Modal Area (Jahan bada avatar dikhega) -->
+<div id="profile-modal" class="modal">
+    <!-- Aapka JS 'profile-avatar' ID ko dhoond kar src badlega -->
+    <img id="profile-avatar" class="modal-avatar" src="https://cloudflare.com" alt="Modal Profile Pic">
+</div>
 
-<!-- User Information Text -->
+<!-- 2. Profile Capsule Area (Main page par jo capsule dikhta hai) -->
+<div class="profile-capsule-container">
+    
+    <!-- Aapka JS 'capsule-avatar-img' ID ko dhoond kar src badlega -->
+    <img id="capsule-avatar-img" class="profile-capsule-avatar" src="https://cloudflare.com" alt="User DP">
+    
+    <!-- User Information Text -->
     <div class="profile-capsule-info">
         <!-- Aapka JS 'capsule-full-name' ID ke andar 'Loading...' ko hatakar naam likhega -->
-        <div class="profile-capsule-name" id="capsule-full-name">Loading...</div>
+        <div class="profile-capsule-name" id="capsule-full-name"></div>
         <div class="profile-capsule-sub">tap profile</div>
     </div>
 
 </div>
-    
-    
     
     <!-- Dropdown Arrow Icon -->
     <div class="profile-capsule-arrow">
