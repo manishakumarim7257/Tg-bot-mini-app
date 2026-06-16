@@ -651,16 +651,17 @@
         </div>
     </div>
 
-    <!-- Main Profile Capsule Container -->
-<div class="profile-capsule-container">
-    
-    <!-- Left: Dynamic User DP -->
-    <img class="profile-capsule-avatar" src="https://cloudflare.com" alt="User DP" id="capsule-avatar-img">
-    
-    <!-- Center: User Information Text -->
-    <div class="profile-capsule-info">
-        <div class="profile-capsule-name" id="capsule-full-name">Loading...</div>
-        <div class="profile-capsule-sub">tap profile</div>
+    <!-- Feature 1: User Details - Compact Tap Card -->
+    <div id="user-card">
+        <div class="profile-tap-card" onclick="openProfileModal()">
+            <div class="profile-tap-content">
+                <img id="profile-tap-avatar" class="profile-tap-avatar" src="https://cloudflare.com" alt="User DP">
+                <div class="profile-tap-info">
+                    <p class="profile-tap-name" id="profile-tap-name">Loading...</p>
+                    <p class="profile-tap-hint">📍 Tap to view details</p>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!-- Dropdown Arrow Icon -->
