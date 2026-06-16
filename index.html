@@ -96,6 +96,22 @@
             font-weight: bold; 
         }
 
+        /* Profile Photo Design */
+        .avatar-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            object-fit: cover;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            margin: 0 auto;
+        }
+
         /* Chat Box - Uniform Size */
         .chat-box {
             width: 100%;
@@ -188,244 +204,313 @@
             background-color: var(--secondary-color);
         }
 
-        /* Profile Modal Styles - FULLSCREEN */
-    .profile-capsule-trigger {
-    display: flex;
-    align-items: center;
-    background-color: #0f1c24;     /* Dark charcoal dark matching design layout */
-    border: 1px solid #1e3a47;      /* Clean subtle structural border line outline */
-    border-radius: 30px;           /* Capsule pill shape presentation corners */
-    padding: 8px 18px;             /* Clean layout alignment separation spacing */
-    width: fit-content;            /* Fits properly bounds context container spacing */
-    min-width: 250px;              /* Standard width matching user devices */
-    color: #ffffff;                /* Global default text color structure to white */
-    font-family: sans-serif;       /* Clean default standard fonts presentation */
-    cursor: pointer;               /* Changes cursor indicator behavior to clicking hand */
-    user-select: none;             /* Disables text highlight marker on sudden taps */
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    margin-bottom: 15px;           /* Adds systematic structural buffer spacer directly below */
-}
+        /* Compact Profile Card */
+        #user-card {
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+            margin-bottom: 15px;
+        }
 
-/* Hover Effect - Mouse over animation highlight */
-.profile-capsule-trigger:hover {
-    background-color: #142631;     
-}
+        .profile-tap-card {
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg-color);
+            border-radius: 12px;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            overflow: hidden;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-/* Active Click Effect - Small scaling bounce tactile response animation */
-.profile-capsule-trigger:active {
-    transform: scale(0.98);
-}
+        .profile-tap-card:active {
+            transform: scale(0.98);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
 
-/* Rounded Avatar Graphic Layout style inside layout capsule */
-.profile-capsule-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;            /* Standard circular presentation bounding box */
-    object-fit: cover;             /* Maintains clean visual proportions constraints */
-    margin-right: 12px;            /* Pushes username safely to the side parameter */
-    border: 1px solid #2d4f61;     
-    background-color: #1e3a47;     
-}
+        .profile-tap-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
 
-/* Flex Container Wrapper layout for typography data rows */
-.profile-capsule-info {
-    flex-grow: 1;                  /* Takes up rest responsive alignment columns flow */
-    display: flex;
-    flex-direction: column;        /* Vertically aligned parameter configuration rows */
-}
+        .profile-tap-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
 
-/* Primary Profile Username styling definitions */
-.profile-capsule-name {
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    color: #ffffff;
-}
+        .profile-tap-info {
+            flex: 1;
+            color: white;
+        }
 
-/* Lower Subtitle instruction "tap profile" helper caption description */
-.profile-capsule-sub {
-    font-size: 18px;
-    color: #8fa3b0;                /* Light tone color contrast adjustment */
-    margin-top: 4px;
-}
+        .profile-tap-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0;
+        }
 
-/* Right Dropdown Arrow alignment wrapper vector icon formatting */
-.profile-capsule-arrow {
-    display: flex;
-    align-items: center;
-    color: #8fa3b0;
-    margin-left: 8px;
-}
+        .profile-tap-hint {
+            font-size: 12px;
+            opacity: 0.9;
+            margin: 4px 0 0 0;
+        }
 
-/* ========================================================================== */
-.profile-modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 10000;
-    justify-content: center;
-    align-items: flex-start;
-    overflow-y: auto;
-    padding: 20px 0;
-}
+        /* Status Badge */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
 
-.profile-modal {
-    background: var(--bg-color);
-    border-radius: 16px;
-    padding: 0;
-    width: 95%;
-    max-width: 500px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
-    animation: slideUp 0.3s ease;
-    margin: 20px auto;
-}
+        .status-online {
+            background-color: #10b981;
+            color: white;
+        }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+        .status-away {
+            background-color: #f59e0b;
+            color: white;
+        }
 
-.profile-modal-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
-    padding: 30px 20px;
-    border-radius: 16px 16px 0 0;
-    text-align: center;
-    position: relative;
-}
+        .status-offline {
+            background-color: #6b7280;
+            color: white;
+        }
 
-.profile-modal-header h2 {
-    margin: 0;
-    font-size: 24px;
-    margin-bottom: 15px;
-}
+        /* Active Time Box */
+        .active-time-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 12px;
+        }
 
-.profile-modal-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(255, 255, 255, 0.3);
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+        .active-time-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 4px;
+        }
 
-.profile-modal-close-btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.1);
-}
+        .active-time-value {
+            font-size: 13px;
+            opacity: 0.95;
+        }
 
-.profile-modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 20px;
-}
+        /* Profile Details Modal */
+        .profile-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
 
-.profile-modal-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 5px solid var(--primary-color);
-    object-fit: cover;
-    margin-bottom: 25px;
-    box-shadow: 0 6px 16px var(--shadow-color);
-}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
-.profile-user-name {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 20px;
-}
+        .profile-modal-overlay.show {
+            display: flex;
+        }
 
-.profile-modal-info {
-    width: 100%;
-    margin-bottom: 20px;
-}
+        .profile-modal {
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 0;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
 
-.profile-info-row {
-    background: var(--card-bg);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    border-left: 5px solid var(--primary-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-.profile-info-left {
-    display: flex;
-    flex-direction: column;
-}
+        .profile-modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+        }
 
-.profile-info-label {
-    font-size: 11px;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
+        .profile-modal-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 16px;
+        }
 
-.profile-info-value {
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--text-color);
-    word-break: break-all;
-}
+        .profile-modal-content {
+            padding: 20px;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
 
-.profile-info-icon {
-    font-size: 28px;
-    margin-left: 15px;
-    opacity: 0.6;
-}
+        .profile-modal-avatar-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.profile-modal-buttons {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    margin-top: 20px;
-}
+        .profile-modal-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            object-fit: cover;
+            position: relative;
+        }
 
-.profile-modal-btn {
-    flex: 1;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 15px;
-}
+        /* Status Indicator on Avatar */
+        .status-indicator {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid white;
+            bottom: 0;
+            right: 0;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.profile-close-btn {
-    background-color: var(--primary-color);
-    color: white;
-}
+        .status-indicator.online {
+            background-color: #10b981;
+        }
 
-.profile-close-btn:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-2px);
-    }
-        
+        .status-indicator.away {
+            background-color: #f59e0b;
+        }
+
+        .status-indicator.offline {
+            background-color: #6b7280;
+        }
+
+        .profile-modal-content p {
+            margin: 12px 0;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .profile-info-section {
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+
+        .profile-info-label {
+            font-size: 12px;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .profile-info-value {
+            font-size: 14px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .profile-modal-footer {
+            padding: 15px;
+            background: var(--card-bg);
+            text-align: center;
+            border-top: 1px solid var(--shadow-color);
+        }
+
+        .profile-modal-close {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-modal-close:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* User Details Card with 2-color design */
+        .user-details-box {
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg-color);
+            border-radius: 12px;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .user-details-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .user-details-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 16px;
+        }
+
+        .user-details-content {
+            padding: 15px;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .user-details-content .avatar-container {
+            margin-bottom: 15px;
+        }
+
+        .user-details-content p {
+            margin: 8px 0;
+            font-size: 13px;
+            color: var(--text-color);
+        }
+
         /* Theme Selector Modal */
         .theme-modal-overlay {
             display: none;
@@ -639,444 +724,4 @@
                     Green
                 </div>
                 <div class="theme-option purple-option" onclick="setTheme('purple-theme', this)" data-theme="purple-theme">
-                    Purple
-                </div>
-                <div class="theme-option ocean-option" onclick="setTheme('ocean-theme', this)" data-theme="ocean-theme">
-                    Ocean
-                </div>
-            </div>
-            <div class="modal-button-group">
-                <button class="modal-button close-button" onclick="closeThemeModal()">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Feature 1: User Details - Compact Tap Card -->
-    <div id="user-card">
-        <div class="profile-tap-card" onclick="openProfileModal()">
-            <div class="profile-tap-content">
-                <img id="profile-tap-avatar" class="profile-tap-avatar" src="https://cloudflare.com" alt="User DP">
-                <div class="profile-tap-info">
-                    <p class="profile-tap-name" id="profile-tap-name">Loading...</p>
-                    <p class="profile-tap-hint">📍 Tap to view details</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Dropdown Arrow Icon -->
-    <div class="profile-capsule-arrow">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-    </div>
-</div>
-
-<!-- Aapka Purana Profile Modal (Isme koi change nahi hai) -->
-<div class="profile-modal-overlay" id="profileModalOverlay">
-    <div class="profile-modal">
-        <div class="profile-modal-header">
-            <button class="profile-modal-close-btn" onclick="closeProfileModal()">✕</button>
-            <h2>💞Your Profile💞</h2>
-        </div>
-        <div class="profile-modal-content">
-            <img id="profile-avatar" class="profile-modal-avatar" src="https://cloudflare.com" alt="User DP">
-            
-            <div class="profile-user-name" id="profile-full-name">Loading...</div>
-            
-            <div class="profile-modal-info">
-                <div class="profile-info-row">
-                    <div class="profile-info-left">
-                        <div class="profile-info-label">💞 Full Name</div>
-                        <div class="profile-info-value" id="profile-name">Loading...</div>
-                    </div>
-                    <div class="profile-info-icon">💞</div>
-                </div>
-
-                <div class="profile-info-row">
-                    <div class="profile-info-left">
-                        <div class="profile-info-label">💞 Username</div>
-                        <div class="profile-info-value" id="profile-username">Loading...</div>
-                    </div>
-                    <div class="profile-info-icon">💞</div>
-                </div>
-
-                <div class="profile-info-row">
-                    <div class="profile-info-left">
-                        <div class="profile-info-label">💞 User ID</div>
-                        <div class="profile-info-value" id="profile-id">Loading...</div>
-                    </div>
-                    <div class="profile-info-icon">🔢</div>
-                </div>
-
-                <div class="profile-info-row">
-                    <div class="profile-info-left">
-                        <div class="profile-info-label">💞 Language</div>
-                        <div class="profile-info-value" id="profile-lang">Loading...</div>
-                    </div>
-                    <div class="profile-info-icon">💞</div>
-                </div>
-
-                <div class="profile-info-row">
-                    <div class="profile-info-left">
-                        <div class="profile-info-label">💞 Member Since</div>
-                        <div class="profile-info-value" id="profile-date">Today</div>
-                    </div>
-                    <div class="profile-info-icon">💞</div>
-                </div>
-
-                <div class="profile-info-row">
-                    <div class="profile-info-left">
-                        <div class="profile-info-label">📟 Status</div>
-                        <div class="profile-info-value" id="profile-status">🟢 Online</div>
-                    </div>
-                    <div class="profile-info-icon">✨</div>
-                </div>
-            </div>
-
-            <div class="profile-modal-buttons">
-                <button class="profile-modal-btn profile-close-btn" onclick="closeProfileModal()">Close Profile</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <h2>🤖 Music Bot Collective</h2>
-
-    <!-- Active Bots Card -->
-    <div class="card" id="active-card">
-        <h3>Total Bots 10</h3>
-        <p><span class="bold">Active Bots:</span> 03</p>
-    </div>
-
-    <!-- Chat Box 1: Laado Music -->
-    <div class="card" id="online-card">
-        <div class="chat-box">
-            <div class="chat-message-row">
-                <img src="laado-music.png" alt="User Avatar" class="chat-dp">
-                <div class="message-content-wrapper">
-                    <div class="user-name">˹ʟᴀᴀᴅᴏ ꭙ ᴍᴜsɪᴄ˼ ♪</div>
-                    <div class="message-bubble">Username: @laado_musicbot</div>
-                    <div class="message-time">🟢 Online</div>
-                    <div class="button-container">
-                        <a href="https://t.me/laado_musicbot?startgroup=true" class="help-button">ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Chat Box 2: PlayerPro Music -->
-    <div class="card" id="open-card">
-        <div class="chat-box">
-            <div class="chat-message-row">
-                <img src="playerpro-music.png" alt="User Avatar" class="chat-dp">
-                <div class="message-content-wrapper">
-                    <div class="user-name">𝗣𝗹𝗮𝘆𝘦𝘳𝘱𝙧𝘰 ꭙ 𝗠𝑢𝑠𝑖𝑐 ♪</div>
-                    <div class="message-bubble">Username: @PlayerPro_MusicBot</div>
-                    <div class="message-time">🟢 Online</div>
-                    <div class="button-container">
-                        <a href="https://t.me/PlayerPro_MusicBot?startgroup=true" class="help-button">ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Chat Box 3: Kuku Music -->
-    <div class="card" id="one-card">
-        <div class="chat-box">
-            <div class="chat-message-row">
-                <img src="kuku-music.png" alt="User Avatar" class="chat-dp">
-                <div class="message-content-wrapper">
-                    <div class="user-name">˹ᴋᴜᴋᴜ ꭙ ᴍᴜꜱɪᴄ˼ ♪</div>
-                    <div class="message-bubble">Username: @Kuku_MusicBot</div>
-                    <div class="message-time">🟢 Online</div>
-                    <div class="button-container">
-                        <a href="https://t.me/Kuku_MusicBot?startgroup=true" class="help-button">ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-    <!-- Feature 3: App developer Details -->
-    <div class="card" id="developer-card">
-        <h3>Developer & Support</h3>
-    </div>
-    
-    <!-- Chat Box 4: Owner details-->
-    <div class="card" id="owner-card">
-        <div class="chat-box">
-            <div class="chat-message-row">
-                <img src="my-dp.png" alt="User Avatar" class="chat-dp">
-                <div class="message-content-wrapper">
-                    <div class="user-name">Niraj Kumar</div>
-                    <div class="message-bubble">Username: @Comeback_009</div>
-                    <div class="message-time">ID: 7771481658</div>
-                    <div class="button-container">
-                        <a href="https://t.me/Comeback_009" class="my-button">any issue dm 💬</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function initTelegramApp() {
-            const tg = window.Telegram?.WebApp;
-
-            if (tg) {
-                tg.ready();
-                tg.expand();
-
-                const user = tg.initDataUnsafe?.user;
-
-                if (user && user.id) {
-                    // Compact Profile Card
-                    document.getElementById('profile-tap-name').innerText = `${user.first_name} ${user.last_name || ''}`;
-                    document.getElementById('profile-tap-avatar').src = user.photo_url || "https://cloudflare.com";
-
-                    // Modal Details
-                    document.getElementById('profile-modal-name').innerText = `${user.first_name} ${user.last_name || ''}`;
-                    document.getElementById('profile-modal-username').innerText = user.username ? `@${user.username}` : 'No Username';
-                    document.getElementById('profile-modal-id').innerText = user.id;
-                    document.getElementById('profile-modal-lang').innerText = user.language_code || 'en';
-                    document.getElementById('profile-modal-avatar').src = user.photo_url || "https://cloudflare.com";
-
-                    clearInterval(checkInterval);
-                }
-            }
-        }
-
-        const checkInterval = setInterval(initTelegramApp, 500);
-
-        setTimeout(() => {
-            clearInterval(checkInterval);
-            if (document.getElementById('profile-modal-id').innerText === "Loading...") {
-                // Compact Profile Card
-                document.getElementById('profile-tap-name').innerText = "Web Browser Mode";
-                document.getElementById('profile-tap-avatar').src = "https://cloudflare.com";
-
-                // Modal Details
-                document.getElementById('profile-modal-name').innerText = "Web Browser Mode";
-                document.getElementById('profile-modal-username').innerText = "@not_inside_tg";
-                document.getElementById('profile-modal-id').innerText = "Offline_ID_101";
-                document.getElementById('profile-modal-lang').innerText = "en";
-                document.getElementById('profile-modal-avatar').src = "https://cloudflare.com";
-            }
-        }, 5000);
-
-        // Profile Modal Functions
-        function openProfileModal() {
-            document.getElementById('profileModalOverlay').classList.add('show');
-        }
-
-        function closeProfileModal() {
-            document.getElementById('profileModalOverlay').classList.remove('show');
-        }
-
-        // Close modal on overlay click
-        document.getElementById('profileModalOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeProfileModal();
-            }
-        });
-        
-
-                    // Update profile modal
-                    document.getElementById('profile-name').innerText = fullName;
-                    document.getElementById('profile-full-name').innerText = fullName;
-                    document.getElementById('profile-username').innerText = username;
-                    document.getElementById('profile-id').innerText = userId;
-                    document.getElementById('profile-lang').innerText = userLang;
-                    document.getElementById('profile-status').innerText = '🟢 Active Now';
-                    
-                    // Set date
-                    const today = new Date();
-                    const dateStr = today.toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'short', 
-                        day: 'numeric' 
-                    });
-                    document.getElementById('profile-date').innerText = dateStr;
-
-                    if (userPhoto) {
-                        // Modal ki image update karne ke liye
-                        document.getElementById('profile-avatar').src = userPhoto;
-                        
-                        document.getElementById('capsule-avatar-img').src = userPhoto;
-                    }
-                    if (firstName) {
-                        document.getElementById('capsule-full-name').innerText = firstName + (lastName ? ' ' + lastName : '');
-                    }
-
-                    clearInterval(checkInterval);
-                }
-            }
-        }
-
-        const checkInterval = setInterval(initTelegramApp, 500);
-
-        setTimeout(() => {
-            clearInterval(checkInterval);
-            if (document.getElementById('profile-id').innerText === "Loading...") {
-                const userName = "Web Browser Mode";
-                const userUsername = "@not_inside_tg";
-                const userId = "Offline_ID_101";
-                const userLang = "en";
-                const userAvatar = "https://cloudflare.com";
-
-                // Update profile modal
-                document.getElementById('profile-name').innerText = userName;
-                document.getElementById('profile-full-name').innerText = userName;
-                document.getElementById('profile-username').innerText = userUsername;
-                document.getElementById('profile-id').innerText = userId;
-                document.getElementById('profile-lang').innerText = userLang;
-                document.getElementById('profile-avatar').src = userAvatar;
-                document.getElementById('profile-status').innerText = '🟡 Offline';
-                
-                const today = new Date();
-                const dateStr = today.toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'short', 
-                    day: 'numeric' 
-                });
-                document.getElementById('profile-date').innerText = dateStr;
-            }
-        }, 5000);
-
-        // Theme Management Functions
-        function openThemeModal() {
-            document.getElementById('themeModalOverlay').style.display = 'flex';
-        }
-
-        function closeThemeModal() {
-            document.getElementById('themeModalOverlay').style.display = 'none';
-        }
-
-        function setTheme(themeName, element) {
-            // Remove previous theme
-            document.body.classList.remove('light-theme', 'dark-theme', 'green-theme', 'purple-theme', 'ocean-theme');
-            
-            // Add new theme
-            document.body.classList.add(themeName);
-            
-            // Update active state
-            document.querySelectorAll('.theme-option').forEach(opt => {
-                opt.classList.remove('active');
-            });
-            element.classList.add('active');
-            
-            // Save to localStorage
-            localStorage.setItem('selectedTheme', themeName);
-        }
-
-        // Profile Modal Functions
-        function openProfileModal() {
-            document.getElementById('profileModalOverlay').style.display = 'flex';
-        }
-
-        function closeProfileModal() {
-            document.getElementById('profileModalOverlay').style.display = 'none';
-        }
-
-        // Load saved theme on page load
-        window.addEventListener('load', () => {
-            const savedTheme = localStorage.getItem('selectedTheme') || 'light-theme';
-            document.body.classList.remove('light-theme', 'dark-theme', 'green-theme', 'purple-theme', 'ocean-theme');
-            document.body.classList.add(savedTheme);
-            
-            // Update active indicator
-            document.querySelectorAll('.theme-option').forEach(opt => {
-                if (opt.getAttribute('data-theme') === savedTheme) {
-                    opt.classList.add('active');
-                }
-            });
-        });
-
-        // Close modals when clicking outside
-        document.getElementById('themeModalOverlay').addEventListener('click', (e) => {
-            if (e.target.id === 'themeModalOverlay') {
-                closeThemeModal();
-            }
-        });
-
-        document.getElementById('profileModalOverlay').addEventListener('click', (e) => {
-            if (e.target.id === 'profileModalOverlay') {
-                closeProfileModal();
-            }
-        });
-    </script>
-
-    <!-- छह रंग-बिरंगे बटनों का HTML कोड -->
-    <div class="custom-bottom-container">
-        <button class="custom-bottom-btn bot1-btn" onclick="openBot1(event)" ontouchstart="openBot1(event)">Bot 1</button>
-        <button class="custom-bottom-btn bot2-btn" onclick="openBot2(event)" ontouchstart="openBot2(event)">Bot 2</button>
-        <button class="custom-bottom-btn bot3-btn" onclick="openBot3(event)" ontouchstart="openBot3(event)">Bot 3</button>
-        
-        <!-- नए 3 बॉट्स के बटन्स -->
-        <button class="custom-bottom-btn channel-btn" onclick="openMyChannel(event)" ontouchstart="openMyChannel(event)">Update</button>
-        <button class="custom-bottom-btn group-btn" onclick="openMyGroup(event)" ontouchstart="openMyGroup(event)">Support</button>
-        <button class="custom-bottom-btn third-btn" onclick="openThirdLink(event)" ontouchstart="openThirdLink(event)">Help</button>
-    </div>
-
-    <!-- टेलीग्राम का जावास्क्रिप्ट SDK -->
-    <script src="https://telegram.org"></script>
-
-    <script>
-        // टेलीग्राम वेब ऐप को तुरंत इनिशियलाइज करना
-        const tg = window.Telegram.WebApp;
-        
-        // यह टेलीग्राम को बताता है कि ऐप लोड हो चुका है
-        tg.ready();
-        tg.expand();
-
-        // डबल क्लिक या टच लैग को रोकने के लिए हेल्पर फ़ंक्शन
-        function handleNavigation(e, url) {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            
-            // टेलीग्राम SDK के ज़रिए लिंक खोलना
-            if (tg && typeof tg.openTelegramLink === 'function') {
-                tg.openTelegramLink(url);
-            } else {
-                window.open(url, '_blank');
-            }
-        }
-
-        // 1. Bot 1 का लिंक
-        function openBot1(e) {
-            handleNavigation(e, "https://t.me/laado_musicbot?start=_tgr_CR8ielg0YTJl");
-        }
-
-        // 2. Bot 2 का लिंक
-        function openBot2(e) {
-            handleNavigation(e, "https://t.me/PlayerPro_MusicBot?start=_tgr_C62RiaZlNTVl");
-        }
-
-        // 3. Bot 3 का लिंक
-        function openBot3(e) {
-            handleNavigation(e, "https://t.me/Kuku_MusicBot?start=_tgr_6kQXhMQ1MzQ9");
-        }
-
-        // 4. चैनल का लिंक
-        function openMyChannel(e) {
-            handleNavigation(e, "https://t.me/Sangeet_Stream"); 
-        }
-
-        // 5. ग्रुप का लिंक
-        function openMyGroup(e) {
-            handleNavigation(e, "https://t.me/sapna_quiz"); 
-        }
-
-        // 6. तीसरे हेल्प बटन का लिंक
-        function openThirdLink(e) {
-            handleNavigation(e, "https://t.me/Comeback_009"); 
-        }
-    </script>
-</body>
-</html>
+ 
