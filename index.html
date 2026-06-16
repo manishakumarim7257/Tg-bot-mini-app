@@ -653,15 +653,17 @@
 
       <!-- Profile Trigger Capsule (Purane Button ki jagah ise lagayein) -->
 <div class="profile-capsule-trigger" onclick="openProfileModal()">
-    <!-- Profile Avatar Image (Yeh modal ke avatar se connect ho jayegi) -->
-    <img class="profile-capsule-avatar" src="https://cloudflare.com" alt="User DP" id="capsule-avatar-img">
-    
-    <!-- User Information Text -->
+    <!-- Profile Avatar Image (Yeh modal ke avatar se connect ho chuki hai) -->
+<img class="profile-capsule-avatar" src="https://cloudflare.com" alt="User DP" id="capsule-avatar-img">
+
+<!-- User Information Text (Ab yeh line bhi user name se connect ho jayegi) -->
 <div class="profile-capsule-info">
-    <!--jab tak user name fund nahi hota hai Loading... likhega-->
-    <div class="profile-capsule-full-name-info">
+    <!-- JavaScript is id ko dhoond kar login user ka naam yahan likh dega -->
+    <div class="profile-capsule-name" id="capsule-full-name">Loading...</div>
     <div class="profile-capsule-sub">tap profile</div>
 </div>
+    
+    
     
     <!-- Dropdown Arrow Icon -->
     <div class="profile-capsule-arrow">
