@@ -704,10 +704,9 @@
 </head>
 <body class="light-theme">
     <h2>Welcome dear 👀</h2>
-    <h4>🎧 Looking For A Music Bot? ✨Fast • Smooth • 24/7 Active, Play 🔍 Your Favorite Songs Instantly, Enjoy Music Without Hassle 🎶 Try It Once, You'll Love It 💞</h4>
     
     <!-- Theme Selector Button -->
-    <button class="theme-toggle-btn" onclick="openThemeModal()" title="Change Theme">🎨</button>
+    <button class="theme-toggle-btn" onclick="openThemeModal()" title="Change Theme">🎨 Change Theme</button>
 
     <!-- Theme Modal -->
     <div class="theme-modal-overlay" id="themeModalOverlay">
@@ -744,7 +743,7 @@
                 <img id="profile-tap-avatar" class="profile-tap-avatar" src="https://cloudflare.com" alt="User DP">
                 <div class="profile-tap-info">
                     <p class="profile-tap-name" id="profile-tap-name">Loading...</p>
-                    <p class="profile-tap-hint">📍 Tap to view details</p>
+                    <p class="profile-tap-hint">💻 Tap to view details</p>
                 </div>
             </div>
         </div>
@@ -757,12 +756,14 @@
         </svg>
     </div>
 </div>
+    <h4>🎧 Looking For A Music Bot? ✨Fast • Smooth • 24/7 Active, Play 🔍 Your Favorite Songs Instantly, Enjoy Music Without Hassle 🎶 Try It Once, You'll Love It 💞</h4>
+    
 
     <!-- Profile Details Modal -->
     <div class="profile-modal-overlay" id="profileModalOverlay">
         <div class="profile-modal">
             <div class="profile-modal-header">
-                <h3>👤 Your Profile</h3>
+                <h3>💞Your Profile💞</h3>
             </div>
             <div class="profile-modal-content">
                 <div class="profile-modal-avatar-container">
@@ -802,7 +803,7 @@
                 <!-- User Status Section -->
                 <div class="profile-info-section">
                     <div>
-                        <span class="profile-info-label">🟢 Current Status</span>
+                        <span class="profile-info-label">📱Current Status</span>
                         <div class="profile-info-value" id="profile-modal-status">Online</div>
                     </div>
                 </div>
@@ -826,7 +827,7 @@
                 <!-- Join Date -->
                 <div class="profile-info-section">
                     <div>
-                        <span class="profile-info-label">📅 Member Since</span>
+                        <span class="profile-info-label">🗓️ Member Since</span>
                         <div class="profile-info-value" id="profile-modal-join-date">Today</div>
                     </div>
                 </div>
@@ -838,14 +839,12 @@
     </div>
 
     <h2>🤖 Music Bot Collective</h2>
-
-    <!-- Active Bots Card -->
+<!-- Active Bots Card -->
     <div class="card" id="active-card">
         <h3>Total Bots 10</h3>
         <p><span class="bold">Active Bots:</span> 03</p>
     </div>
-
-    <!-- Chat Box 1: Laado Music -->
+<!-- Chat Box 1: Laado Music -->
     <div class="card" id="online-card">
         <div class="chat-box">
             <div class="chat-message-row">
@@ -861,8 +860,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Chat Box 2: PlayerPro Music -->
+<!-- Chat Box 2: PlayerPro Music -->
     <div class="card" id="open-card">
         <div class="chat-box">
             <div class="chat-message-row">
@@ -878,8 +876,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Chat Box 3: Kuku Music -->
+<!-- Chat Box 3: Kuku Music -->
     <div class="card" id="one-card">
         <div class="chat-box">
             <div class="chat-message-row">
@@ -895,14 +892,27 @@
             </div>
         </div>
     </div>
-
-    
-    <!-- Feature 3: App developer Details -->
+    <!-- Chat Box 4: Radha Music -->
+    <div class="card" id="radha-card">
+        <div class="chat-box">
+            <div class="chat-message-row">
+                <img src="playerpro-music.png" alt="User Avatar" class="chat-dp">
+                <div class="message-content-wrapper">
+                    <div class="user-name">Radha ꭙ Music ♪</div>
+                    <div class="message-bubble">Username: @radha_MusicBot</div>
+                    <div class="message-time">🟢 Online</div>
+                    <div class="button-container">
+                        <a href="https://t.me/PlayerPro_MusicBot?startgroup=true" class="help-button">ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!-- Feature 3: App developer Details -->
     <div class="card" id="developer-card">
         <h3>Developer & Support</h3>
     </div>
-    
-    <!-- Chat Box 4: Owner details-->
+     <!-- Chat Box 4: Owner details-->
     <div class="card" id="owner-card">
         <div class="chat-box">
             <div class="chat-message-row">
@@ -918,8 +928,7 @@
             </div>
         </div>
     </div>
-
-    <script>
+<script>
         // Track user session start time
         const userSessionStartTime = new Date();
         let lastActivityTime = new Date();
@@ -1136,5 +1145,73 @@
             }
         });
     </script>
+        <!-- छह रंग-बिरंगे बटनों का HTML कोड -->
+    <div class="custom-bottom-container">
+        <button class="custom-bottom-btn bot1-btn" onclick="openBot1(event)" ontouchstart="openBot1(event)">Bot 1</button>
+        <button class="custom-bottom-btn bot2-btn" onclick="openBot2(event)" ontouchstart="openBot2(event)">Bot 2</button>
+        <button class="custom-bottom-btn bot3-btn" onclick="openBot3(event)" ontouchstart="openBot3(event)">Bot 3</button>
+        
+        <!-- नए 3 बॉट्स के बटन्स -->
+        <button class="custom-bottom-btn channel-btn" onclick="openMyChannel(event)" ontouchstart="openMyChannel(event)">Update</button>
+        <button class="custom-bottom-btn group-btn" onclick="openMyGroup(event)" ontouchstart="openMyGroup(event)">Support</button>
+        <button class="custom-bottom-btn third-btn" onclick="openThirdLink(event)" ontouchstart="openThirdLink(event)">Help</button>
+    </div>
+
+    <!-- टेलीग्राम का जावास्क्रिप्ट SDK -->
+    <script src="https://telegram.org"></script>
+
+    <script>
+        // टेलीग्राम वेब ऐप को तुरंत इनिशियलाइज करना
+        const tg = window.Telegram.WebApp;
+        
+        // यह टेलीग्राम को बताता है कि ऐप लोड हो चुका है
+        tg.ready();
+        tg.expand();
+
+        // डबल क्लिक या टच लैग को रोकने के लिए हेल्पर फ़ंक्शन
+        function handleNavigation(e, url) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            // टेलीग्राम SDK के ज़रिए लिंक खोलना
+            if (tg && typeof tg.openTelegramLink === 'function') {
+                tg.openTelegramLink(url);
+            } else {
+                window.open(url, '_blank');
+            }
+        }
+
+        // 1. Bot 1 का लिंक
+        function openBot1(e) {
+            handleNavigation(e, "https://t.me/laado_musicbot?start=_tgr_CR8ielg0YTJl");
+        }
+
+        // 2. Bot 2 का लिंक
+        function openBot2(e) {
+            handleNavigation(e, "https://t.me/PlayerPro_MusicBot?start=_tgr_C62RiaZlNTVl");
+        }
+
+        // 3. Bot 3 का लिंक
+        function openBot3(e) {
+            handleNavigation(e, "https://t.me/Kuku_MusicBot?start=_tgr_6kQXhMQ1MzQ9");
+        }
+
+        // 4. चैनल का लिंक
+        function openMyChannel(e) {
+            handleNavigation(e, "https://t.me/Sangeet_Stream"); 
+        }
+
+        // 5. ग्रुप का लिंक
+        function openMyGroup(e) {
+            handleNavigation(e, "https://t.me/sapna_quiz"); 
+        }
+
+        // 6. तीसरे हेल्प बटन का लिंक
+        function openThirdLink(e) {
+            handleNavigation(e, "https://t.me/Comeback_009"); 
+        }
+    </script>
 </body>
-                        </html>
+</html>
