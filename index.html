@@ -181,12 +181,9 @@
             text-align: center;
             width: 100%;
             margin-top: 12px;
-        }
-       
-        .button-container {
-    display: flex;       /* बटनों को एक लाइन में रखने के लिए */
-    gap: 12px;           /* दोनों बटनों के बीच 12px का स्पेस देने के लिए */
-    flex-wrap: wrap;     /* मोबाइल स्क्रीन पर बटन नीचे एडजस्ट होने के लिए */
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         /* Help Button / My Button */
@@ -1154,11 +1151,7 @@
     </script>
         <!-- छह रंग-बिरंगे बटनों का HTML कोड -->
     <div class="custom-bottom-container">
-        <button class="custom-bottom-btn bot1-btn" onclick="openBot1(event)" ontouchstart="openBot1(event)">Bot 1</button>
-        <button class="custom-bottom-btn bot2-btn" onclick="openBot2(event)" ontouchstart="openBot2(event)">Bot 2</button>
-        <button class="custom-bottom-btn bot3-btn" onclick="openBot3(event)" ontouchstart="openBot3(event)">Bot 3</button>
-        
-        <!-- नए 3 बॉट्स के बटन्स -->
+        <!--- सपोर्ट केे तीन बटन ---!>
         <button class="custom-bottom-btn channel-btn" onclick="openMyChannel(event)" ontouchstart="openMyChannel(event)">Update</button>
         <button class="custom-bottom-btn group-btn" onclick="openMyGroup(event)" ontouchstart="openMyGroup(event)">Support</button>
         <button class="custom-bottom-btn third-btn" onclick="openThirdLink(event)" ontouchstart="openThirdLink(event)">Help</button>
@@ -1190,32 +1183,17 @@
             }
         }
 
-        // 1. Bot 1 का लिंक
-        function openBot1(e) {
-            handleNavigation(e, "https://t.me/laado_musicbot?start=_tgr_CR8ielg0YTJl");
-        }
-
-        // 2. Bot 2 का लिंक
-        function openBot2(e) {
-            handleNavigation(e, "https://t.me/PlayerPro_MusicBot?start=_tgr_C62RiaZlNTVl");
-        }
-
-        // 3. Bot 3 का लिंक
-        function openBot3(e) {
-            handleNavigation(e, "https://t.me/Kuku_MusicBot?start=_tgr_6kQXhMQ1MzQ9");
-        }
-
-        // 4. चैनल का लिंक
+        // 1. चैनल का लिंक
         function openMyChannel(e) {
             handleNavigation(e, "https://t.me/Sangeet_Stream"); 
         }
 
-        // 5. ग्रुप का लिंक
+        // 2. ग्रुप का लिंक
         function openMyGroup(e) {
             handleNavigation(e, "https://t.me/sapna_quiz"); 
         }
 
-        // 6. तीसरे हेल्प बटन का लिंक
+        // 3. तीसरे हेल्प बटन का लिंक
         function openThirdLink(e) {
             handleNavigation(e, "https://t.me/Comeback_009"); 
         }
